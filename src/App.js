@@ -1,26 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Banner from "./Banner";
+import TranslateButton from "./TranslateButton";
 
-function App() {
+export default function App () {
+  const [idioma, setIdioma] = useState("espanol")
+
+  function traducir(){
+    setIdioma(idioma === "ingles" ? "espanol": "ingles")
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <TranslateButton clicker={() => traducir()}/>
+      <Banner idioma={idioma}/>
     </div>
-  );
-}
 
-export default App;
+    ) 
+}
